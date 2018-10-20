@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  patient_id: 1
+  treatment_id: 1
+  active: false
+
+two:
+  patient_id: 1
+  treatment_id: 1
+  active: false
