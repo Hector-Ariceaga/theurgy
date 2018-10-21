@@ -1,14 +1,37 @@
-<h1>Create a User</h1>
+<div class="container">
+  <div>
+    <% if @user.errors.any? %>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    <% end %>
+  </div>
 
-<%= form_for @user do |f| %>
-  <%= f.label :name, 'Name' %>
-  <%= f.text_field :name %>
 
-  <%= f.label :username, 'Username' %>
-  <%= f.text_field :username %>
+  <h1>Create a User</h1>
 
-  <%= f.label :password, 'Password' %>
-  <%= f.password_field :password %>
+  <%= form_for @user do |f| %>
 
-  <%= f.submit 'Create Account' %>
-<% end %>
+    <div>
+      <%= f.label :name, 'Name' %><br>
+      <%= f.text_field :name %>
+    </div>
+
+    <div>
+      <%= f.label :username, 'Username' %><br>
+      <%= f.text_field :username %>
+    </div>
+
+    <div>
+      <%= f.label :clinic, 'Clinic(optional)' %><br>
+      <%= f.text_field :clinic %>
+    </div>
+
+    <div>
+      <%= f.label :password, 'Password' %><br>
+      <%= f.password_field :password %>
+    </div>
+
+    <%= f.submit 'Create Account', class: 'btn'%>
+  <% end %>
+</div>

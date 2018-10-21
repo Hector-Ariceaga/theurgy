@@ -1,11 +1,21 @@
-<h1>Log In</h1>
+<div class="container">
 
-<%= form_for @user do |f| %>
-  <%= f.label :username, 'Username' %>
-  <%= f.text_field :username %>
+  <div class="notice"> <%= flash[:message] %> </div>
 
-  <%= f.label :password, 'Password' %>
-  <%= f.password_field :password %>
+  <h1>Log In</h1>
 
-  <%= f.submit 'Log In' %>
-<% end %>
+  <%= form_tag '/signin' do %>
+
+    <div>
+      <%= label_tag :username, 'Username' %>
+      <%= text_field_tag :username %>
+    </div>
+
+    <div>
+      <%= label_tag :password, 'Password' %>
+      <%= password_field_tag :password %>
+    </div>
+
+    <%= submit_tag 'Log In', class: 'btn' %>
+  <% end %>
+</div>
