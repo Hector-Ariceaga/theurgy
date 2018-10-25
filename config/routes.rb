@@ -9,6 +9,6 @@ Rails.application.routes.draw do
     resources :patients
   end
   
-  
   resources :symptoms, only: [:index, :new, :create, :show, :destroy]
+  resources :diagnoses, only: [:index, :new, :create, :show, :destroy]
 end

@@ -1,0 +1,11 @@
+<div class="container">
+  <h1> Diagnoses </h1>
+
+  <ol>
+    <% @diagnoses.each do |diagnosis| %>
+      <li><%= diagnosis.name %> | <%= link_to 'Delete Diagnosis', diagnosis, method: :delete, data:{confirm: "Are you sure you want to destroy this diagnosis?"} %>
+      </li>
+    <% end %>
+  </ol>
+
+</div>
