@@ -1,5 +1,10 @@
 class PatientsController < ApplicationController
+  def index
+    @patients = User.find_by(id: params[:user_id]).patients
+  end
+
   def new
+    @user = User.find_by(id: params[:user_id])
     @patient = Patient.new
   end
 
@@ -8,7 +13,7 @@ class PatientsController < ApplicationController
     @patient.user = current_user
 
     if @patient.save
-      redirect_to patient_path(@patient)
+      redirect_to user_patient_path(current_user, @patient)
     else
       render 'new'
     end
@@ -22,7 +27,7 @@ class PatientsController < ApplicationController
     @patient = Patient.find(params[:id])
 
     if @patient.update(patient_params)
-      redirect_to patient_path(@patient)
+      redirect_to user_patient_path(current_user, @patient)
     else
       render 'edit'
     end
@@ -33,10 +38,10 @@ class PatientsController < ApplicationController
 
     if @patient.destroy
       flash[:message] = "Patient successfully deleted."
-      redirect_to patients_path
+      redirect_to user_patients_path
     else
       flash[:message] = "Patient was deletion was unsuccessful."
-      redirect_to patients_path
+      redirect_to user_patients_path
     end
   end
 

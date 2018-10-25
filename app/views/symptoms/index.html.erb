@@ -1,0 +1,11 @@
+<div class="container">
+  <h1> Symptoms </h1>
+
+  <ol>
+    <% @symptoms.each do |symptom| %>
+      <li><%= symptom.name %> | <%= link_to 'Delete Symptom', symptom, method: :delete, data:{confirm: "Are you sure you want to destroy this symptom?"} %>
+      </li>
+    <% end %>
+  </ol>
+
+</div>

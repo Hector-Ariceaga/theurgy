@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   post '/signin', to: 'sessions#create'
   delete '/signout', to: 'sessions#destroy'
 
-  resources :users, only: [:new, :create, :show]
-  resources :patients
+  resources :users, only: [:new, :create, :show] do
+    resources :patients
+  end
   
   
   resources :symptoms, only: [:index, :new, :create, :show, :destroy]

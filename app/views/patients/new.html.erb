@@ -9,7 +9,7 @@
 
   <h1>Add a Patient</h1>
 
-  <%= form_for @patient do |f| %>
+  <%= form_for [@user, @patient] do |f| %>
     <div>
       <%= f.label :name, "Name" %>
       <%= f.text_field :name %>
