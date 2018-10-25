@@ -22,12 +22,12 @@
 
     <div>
       <%= f.label :symptoms %>
-      <%= f.collection_select(:symptom_ids, Symptom.all(order: 'name'), :id, :name, {prompt: "Select all associated symptoms..."}) %>
+      <%= f.collection_select(:symptom_ids, Symptom.all, :id, :name, {prompt: "Select all associated symptoms..."}) %>
     </div>
 
     <div>
       <%= f.label :diagnoses %>
-      <%= f.collection_select(:diagnosis_ids, Diagnosis.all(order: 'name'), :id, :name, prompt: "Select all associated diagnoses...") %>
+      <%= f.collection_select(:diagnosis_ids, Diagnosis.all, :id, :name, prompt: "Select all associated diagnoses...") %>
     </div>
 
     <div>

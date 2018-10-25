@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  COMMON_ROUTES = [:index, :new, :create, :show, :destroy]
+  
   root 'welcome#home'
 
   get '/signin', to: 'sessions#new'
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
     resources :patients
   end
   
-  resources :symptoms, only: [:index, :new, :create, :show, :destroy]
-  resources :diagnoses, only: [:index, :new, :create, :show, :destroy]
+  resources :symptoms, only: COMMON_ROUTES 
+  resources :diagnoses, only: COMMON_ROUTES 
+  resources :treatments
 end

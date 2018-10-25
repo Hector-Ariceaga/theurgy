@@ -1,4 +1,12 @@
 <div class="container">
+  <div>
+    <% if @symptom.errors.any? %>
+      <% @symptom.errors.full_messages.each do |message| %>
+        <li><%= message.downcase %></li>
+      <% end %>
+    <% end %>
+  </div>
+
   <h1>Create a New Symptom</h1>
 
   <%= form_for @symptom do |f| %>

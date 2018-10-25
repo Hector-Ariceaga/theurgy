@@ -1,0 +1,28 @@
+<div class="container">
+
+  <div class="notice"> <%= flash[:message] %> </div>
+
+  <div>
+    <% if @treatment.errors.any? %>
+      <% @treatment.errors.full_messages.each do |message| %>
+        <li><%= message.downcase %></li>
+      <% end %>
+    <% end %>
+  </div>
+
+  <h1>Edit Treatment</h1>
+
+  <%= form_for @treatment do |f| %>
+    <div>
+      <%= f.label :name, "Name" %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div>
+      <%= f.label :details, "Details" %>
+      <%= f.text_area :details %>
+    </div>
+    
+    <%= f.submit "Edit Treatment" %>
+  <% end %>
+</div>

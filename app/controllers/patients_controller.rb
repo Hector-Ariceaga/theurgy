@@ -9,6 +9,7 @@ class PatientsController < ApplicationController
   end
 
   def create
+    raise params.inspect
     @patient = Patient.new(patient_params)
     @patient.user = current_user
 
