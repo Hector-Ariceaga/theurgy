@@ -1,0 +1,37 @@
+<div class="container">
+  <div>
+    <% if @patient.errors.any? %>
+      <% @patient.errors.full_messages.each do |message| %>
+        <li><%= message.downcase %></li>
+      <% end %>
+    <% end %>
+  </div>
+
+  <h1>Add a Patient</h1>
+
+  <%= form_for @patient do |f| %>
+    <div>
+      <%= f.label :name, "Name" %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div>
+      <%= f.label :dob, "DOB" %>
+      <%= f.date_field :dob, value: @patient.dob.try(:strftime,"%m/%d/%Y"), placeholder: "mm/dd/yyyy" %>
+    </div>
+
+    <div>
+      <%= f.label :symptoms %>
+      <%= f.collection_select(:symptom_ids, Symptom.all, :id, :name, {prompt: "Select all associated symptoms..."}) %>
+    </div>
+
+    <div>
+      <%= f.label :diagnoses %>
+      <%= f.collection_select(:diagnosis_ids, Diagnosis.all, :id, :name, prompt: "Select all associated diagnoses...") %>
+    </div>
+
+    <div>
+      <%= f.submit "Add Patient" %>
+    <div>
+  <% end %>
+</div>
