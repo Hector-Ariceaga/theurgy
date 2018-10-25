@@ -7,5 +7,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show]
   resources :patients
-  resources :symptoms
+  
+  
+  resources :symptoms, only: [:index, :new, :create, :show, :destroy]
 end

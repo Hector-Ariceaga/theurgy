@@ -15,11 +15,11 @@ class PatientsController < ApplicationController
   end
 
   def edit
-    @patient = Patient.find(id: params[:id])
+    @patient = Patient.find(params[:id])
   end
 
   def update
-    @patient = Patient.find(id: params[:id])
+    @patient = Patient.find(params[:id])
 
     if @patient.update(patient_params)
       redirect_to patient_path(@patient)
@@ -28,8 +28,16 @@ class PatientsController < ApplicationController
     end
   end
 
-  def destory
-    Patient.find(id: params[:id]).delete
+  def destroy
+    @patient = Patient.find(params[:id])
+
+    if @patient.destroy
+      flash[:message] = "Patient successfully deleted."
+      redirect_to patients_path
+    else
+      flash[:message] = "Patient was deletion was unsuccessful."
+      redirect_to patients_path
+    end
   end
 
   private
