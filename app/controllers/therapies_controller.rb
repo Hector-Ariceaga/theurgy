@@ -1,4 +1,5 @@
 class TherapiesController < ApplicationController
+  before_action :current_therapy, only: [:show, :edit, :update]
   
   def create
     @therapy = Therapy.new(patient_id: params[:patient_id], treatment_id: params[:treatment_id], active: params[:active])
@@ -13,18 +14,25 @@ class TherapiesController < ApplicationController
   end
 
   def show
-    @therapy = Therapy.find(params[:id])
   end
 
   def edit
-    @therapy = Therapy.find(params[:id])
   end
 
   def update
+    if @therapy.update(params[:active])
+      flash[:message] = "Activity status succesfully changed."
+      redirect to therapy_path(@therapy)
+    else
+      flash[:message] = "Activity update unsuccessful."
+      redirect_to therapy_path(@therapy)
+    end
+  end
+
+  private
+
+  def current_therapy
     @therapy = Therapy.find(params[:id])
-    @therapy.update(params[:active])
-    flash[:message] = "Activity status succesfully changed."
-    redirect to therapy_path(@therapy)
   end
 
   #should private params be used here?

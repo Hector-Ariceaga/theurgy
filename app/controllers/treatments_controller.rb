@@ -1,6 +1,11 @@
 class TreatmentsController < ApplicationController
+  before_action :current_treatment, only: [:show, :edit, :update, :destroy]
+
   def index
     @treatments = Treatment.all
+  end
+
+  def show
   end
 
   def new
@@ -19,17 +24,10 @@ class TreatmentsController < ApplicationController
     end
   end
 
-  def show
-    @treatment = Treatment.find(params[:id])
-  end
-
   def edit
-    @treatment = Treatment.find(params[:id])
   end
 
   def update
-    @treatment = Treatment.find(params[:id])
-
     if @treatment.update(treatment_params)
       flash[:message] = "Treatment successfully updated."
       redirect_to treatment_path(@treatment)
@@ -40,7 +38,6 @@ class TreatmentsController < ApplicationController
   end
 
   def destroy
-    @treatment = Treatment.find(params[:id])
     if @treatment.destroy
       flash[:message] = "Treatment successfully deleted."
       redirect_to treatments_path
@@ -56,5 +53,7 @@ class TreatmentsController < ApplicationController
     params.require(:treatment).permit(:name, :details)
   end
 
-
+  def current_treatment
+    @treatment = Treatment.find(params[:id])
+  end
 end

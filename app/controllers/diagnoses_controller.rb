@@ -1,4 +1,5 @@
 class DiagnosesController < ApplicationController
+  before_action :current_diagnosis, only: [:show, :destroy]
   def index
     @diagnoses = Diagnosis.all
   end
@@ -19,11 +20,9 @@ class DiagnosesController < ApplicationController
   end
 
   def show
-    @diagnosis = Diagnosis.find(params[:id])
   end
 
   def destroy
-    @diagnosis = Diagnosis.find(params[:id])
     if @diagnosis.destroy
       flash[:message] = "diagnosis successfully deleted."
       redirect_to diagnosis_path
@@ -37,5 +36,9 @@ class DiagnosesController < ApplicationController
 
   def diagnosis_params
     params.require(:diagnosis).permit(:name)
+  end
+
+  def current_diagnosis
+    @diagnosis = Diagnosis.find(params[:id])
   end
 end

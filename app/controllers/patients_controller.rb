@@ -1,6 +1,11 @@
 class PatientsController < ApplicationController
+  before_action :current_patient, only: [:show, :edit, :update, :destroy]
+
   def index
     @patients = User.find_by(id: params[:user_id]).patients
+  end
+
+  def show
   end
 
   def new
@@ -21,12 +26,9 @@ class PatientsController < ApplicationController
   end
 
   def edit
-    @patient = Patient.find(params[:id])
   end
 
   def update
-    @patient = Patient.find(params[:id])
-
     if @patient.update(patient_params)
       redirect_to user_patient_path(current_user, @patient)
     else
@@ -35,8 +37,6 @@ class PatientsController < ApplicationController
   end
 
   def destroy
-    @patient = Patient.find(params[:id])
-
     if @patient.destroy
       flash[:message] = "Patient successfully deleted."
       redirect_to user_patients_path
@@ -50,5 +50,9 @@ class PatientsController < ApplicationController
 
   def patient_params
     params.require(:patient).permit(:name, :dob, :symptom_ids[], :diagnosis_ids[])
+  end
+
+  def current_patient
+    @patient = Patient.find(params[:id])
   end
 end

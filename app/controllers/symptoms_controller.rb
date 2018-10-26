@@ -1,8 +1,12 @@
 class SymptomsController < ApplicationController
+  before_action :current_symptom, only: [:show, :destroy]
   def index
     @symptoms = Symptom.all
   end
   
+  def show
+  end
+
   def new
     @symptom = Symptom.new
   end
@@ -18,12 +22,7 @@ class SymptomsController < ApplicationController
     end
   end
 
-  def show
-    @symptom = Symptom.find(params[:id])
-  end
-
   def destroy
-    @symptom = Symptom.find(params[:id])
     if @symptom.destroy
       flash[:message] = "Symptom successfully deleted."
       redirect_to symptoms_path
@@ -37,5 +36,9 @@ class SymptomsController < ApplicationController
 
   def symptom_params
     params.require(:symptom).permit(:name)
+  end
+
+  def current_symptom
+    @symptom = Symptom.find(params[:id])
   end
 end
