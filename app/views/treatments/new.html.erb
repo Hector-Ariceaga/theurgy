@@ -12,17 +12,6 @@
 
   <h1>Create a New Treatment</h1>
 
-  <%= form_for @treatment do |f| %>
-    <div>
-      <%= f.label :name, "Name" %>
-      <%= f.text_field :name %>
-    </div>
-
-    <div>
-      <%= f.label :details, "Details" %>
-      <%= f.text_area :details %>
-    </div>
-    
-    <%= f.submit "Create Treatment" %>
-  <% end %>
+  <%= render 'form' %>
+  
 </div>

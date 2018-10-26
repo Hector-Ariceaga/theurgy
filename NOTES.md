@@ -50,4 +50,7 @@ authorization
 2. admins can get full access to ALL patients and ALL treatments
 
 Development questions:
-new user that is not valid is routing to /users and messing with formatting
+1. forms that are rendered after not being valid are routed to new url and is messing with formatting (example both new user and edit treatment)
+2. nested patients won't CRUD
+3. collection_select tag not working in creation (have tried permitting mass assignment in class)
+4. 

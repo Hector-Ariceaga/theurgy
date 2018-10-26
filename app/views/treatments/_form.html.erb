@@ -1,0 +1,14 @@
+<%= form_for @treatment do |f| %>
+
+  <div>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div>
+    <%= f.label :details, "Details" %><br>
+    <%= f.text_area :details, size: "30x10" %>
+  </div>
+
+  <%= f.submit %>
+<% end %>
