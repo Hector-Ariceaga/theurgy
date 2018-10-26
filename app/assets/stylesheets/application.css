@@ -143,7 +143,7 @@
    -o-transition: 0.5s;
    transition: 0.5s;
  }
- .fh5co-nav ul li a:hover, .fh5co-nav ul li a:focus, .fh5co-nav ul li a:active {
+ .fh5o-nav ul li a:hover, .fh5co-nav ul li a:focus, .fh5co-nav ul li a:active {
    color: black;
  }
  .fh5co-nav ul li.has-dropdown {
@@ -1348,3 +1348,7 @@
  }
 
  /*# sourceMappingURL=style.css.map */
+
+ .center {
+   text-align: center
+ }

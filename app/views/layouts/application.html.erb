@@ -7,8 +7,58 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
+  <div id="page">
+    <nav class="fh5co-nav" role="navigation">
+      <div class="top-menu">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-2">
+              <div id="fh5co-logo">
+                <a href="<%= root_url %>">Theurgy</a>
+              </div>
+            </div>
+            <div class="col-xs-10 text-right menu-1">
+              <ul>
+                <li>
+                  <a href="<%= root_url %>"/>Home</a>
+                </li>
+                <li>
+                  <a href="<%= treatments_path %>"/>Treatments</a>
+                </li>
+        
+                <% if current_user %>
+                  <li>
+                    <a href="<%= user_path(current_user) %>"/><%= current_user.name %>'s Profile</a>
+                  </li>
+                  <li>
+                    <a href="<%= new_user_patient_path(current_user) %>"/>Add Patient</a>
+                  </li>
+                  <li>
+                    <%= link_to 'Log Out', signout_url, method: 'delete'%>
+                  </li>
+                <% else %>
+                  <li class="btn-cta">
+                    <a href="<%= signin_url %>"/>
+                      <span>Log In</span>
+                    </a>
+                  </li>
+                  <li class="btn-cta">
+                    <a href="<%= new_user_url %>"/>
+                     <span>Sign Up</span>
+                    </a>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    
+    <div id="fh50-content">
+      <%= yield %>
+    </div>
+  </div>
 
 </body>
 </html>

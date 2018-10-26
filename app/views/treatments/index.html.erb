@@ -1,8 +1,10 @@
 <div class="container">
 
-  <div class="notice"> <%= flash[:message] %> </div>
+  <div class="btn-outline"> <%= flash[:message] %> </div>
 
-  <h1> Treatments </h1>
+  <div class="center">
+    <h1> Available Treaments </h1>
+  </div>
 
   <ol>
     <% @treatments.each do |treatment| %>
