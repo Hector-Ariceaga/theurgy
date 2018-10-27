@@ -1,0 +1,6 @@
+<h1> Therapy Status </h1>
+
+<%= form_for @therapy do |f| %>
+  <%= f.label :active, 'Check box if therapy is active' %>
+  <%= f.radio_button, value: <%= checked if @therapy.active == true %> %>
+<% end %>

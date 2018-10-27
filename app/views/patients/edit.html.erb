@@ -1,17 +1,14 @@
-<div class="container">
+<div class="notice"> <%= flash[:message] %> </div>
 
-  <div class="notice"> <%= flash[:message] %> </div>
-
-  <div>
-    <% if @patient.errors.any? %>
-      <% @patient.errors.full_messages.each do |message| %>
-        <li><%= message.downcase %></li>
-      <% end %>
+<div>
+  <% if @patient.errors.any? %>
+    <% @patient.errors.full_messages.each do |message| %>
+      <li><%= message.downcase %></li>
     <% end %>
-  </div>
-
-  <h1>Edit a Patient</h1>
-
-  <%= render 'form' %>
-  
+  <% end %>
 </div>
+
+<h1>Edit a Patient</h1>
+
+<%= render 'form' %>
+

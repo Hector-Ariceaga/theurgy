@@ -1,19 +1,13 @@
-<div class="container">
-  <div>
-    <% if @patient.errors.any? %>
-      <% @patient.errors.full_messages.each do |message| %>
-        <li><%= message.downcase %></li>
-      <% end %>
+<div>
+  <% if @patient.errors.any? %>
+    <% @patient.errors.full_messages.each do |message| %>
+      <li><%= message.downcase %></li>
     <% end %>
-  </div>
-
-  <h1>Add a Patient</h1>
-
-  <%= form_for @patient do |f| %>
-    <%= render 'form' %>
-
-    <div>
-      <%= f.submit "Add Patient" %>
-    <div>
   <% end %>
 </div>
+
+<h1>Add a Patient</h1>
+
+<%= render 'form' %>
+
+<% end %>

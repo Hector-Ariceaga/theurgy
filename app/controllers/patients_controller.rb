@@ -2,7 +2,7 @@ class PatientsController < ApplicationController
   before_action :current_patient, only: [:show, :edit, :update, :destroy]
 
   def index
-    @patients = User.find_by(id: params[:user_id]).patients
+    @patients = Patients.all
   end
 
   def show

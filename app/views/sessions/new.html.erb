@@ -1,21 +1,18 @@
-<div class="container">
+<div class="notice"> <%= flash[:message] %> </div>
 
-  <div class="notice"> <%= flash[:message] %> </div>
+<h1>Log In</h1>
 
-  <h1>Log In</h1>
+<%= form_tag '/signin' do %>
 
-  <%= form_tag '/signin' do %>
+  <div>
+    <%= label_tag :username, 'Username' %>
+    <%= text_field_tag :username %>
+  </div>
 
-    <div>
-      <%= label_tag :username, 'Username' %>
-      <%= text_field_tag :username %>
-    </div>
+  <div>
+    <%= label_tag :password, 'Password' %>
+    <%= password_field_tag :password %>
+  </div>
 
-    <div>
-      <%= label_tag :password, 'Password' %>
-      <%= password_field_tag :password %>
-    </div>
-
-    <%= submit_tag 'Log In', class: 'btn' %>
-  <% end %>
-</div>
+  <%= submit_tag 'Log In', class: 'btn' %>
+<% end %>

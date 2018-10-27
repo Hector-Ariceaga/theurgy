@@ -1,14 +1,9 @@
-<div class="container">
+<div class="notice"> <%= flash[:message] %> </div>
 
-  <div class="notice"> <%= flash[:message] %> </div>
+<h1> <%= @treatment.name %> </h1>
 
-  <h1> <%= @treatment.name %> </h1>
-  
-  <div>
-    <p><%= @treatment.details %></p>
-  </div>
-
-  <%= link_to 'Delete Treatment', @treatment, method: :delete, data:{confirm: "Are you sure you want to destroy this treatment?"} %>
-
-
+<div>
+  <p><%= @treatment.details %></p>
 </div>
+
+<%= link_to 'Delete Treatment', @treatment, method: :delete, data:{confirm: "Are you sure you want to destroy this treatment?"} %>

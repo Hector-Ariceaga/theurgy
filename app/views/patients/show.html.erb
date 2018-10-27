@@ -1,0 +1,16 @@
+<h1><%= @patient.name %></h1>
+
+<h3>Current Symptoms</h3>
+
+<% @patient.symptoms.each do |symptom| %>
+  <%= symptom.name %>
+<% end %>
+
+<h3>Current diagnoses</h3>
+
+<% @patient.diagnoses.each do |diagnosis| %>
+  <%= diagnosis.name %>
+<% end %>
+
+<%= link_to 'Edit this patient', user_patient_path([current_user, @patient]) %>
+<%= link_to 'Delete this patient', method: :delete, data:{confirm: "Are you sure you want to delete this patient?"} %>
