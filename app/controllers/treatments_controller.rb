@@ -1,5 +1,7 @@
 class TreatmentsController < ApplicationController
   before_action :current_treatment, only: [:show, :edit, :update, :destroy]
+  before_action :admin?, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_log_in, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @treatments = Treatment.all

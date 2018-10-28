@@ -1,5 +1,7 @@
 class PatientsController < ApplicationController
   before_action :current_patient, only: [:show, :edit, :update, :destroy]
+  before_action :requre_log_in, only: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :admin? [:index]
 
   def index
     @patients = Patients.all

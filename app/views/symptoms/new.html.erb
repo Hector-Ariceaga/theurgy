@@ -1,3 +1,5 @@
+<div class="notice"> <%= flash[:message] %> </div>
+
 <div>
   <% if @symptom.errors.any? %>
     <% @symptom.errors.full_messages.each do |message| %>

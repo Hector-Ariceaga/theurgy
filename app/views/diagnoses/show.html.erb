@@ -4,7 +4,9 @@
 
   <h1> <%= @diagnosis.name %> </h1>
 
-  <%= link_to 'Delete Diagnosis', @diagnosis, method: :delete, data:{confirm: "Are you sure you want to destroy this diagnosis?"} %>
+  <% if admin_logged_in? %>
+    <%= link_to 'Delete Diagnosis', @diagnosis, method: :delete, data:{confirm: "Are you sure you want to destroy this diagnosis?"} %>
+  <% end %>
 
 
 </div>

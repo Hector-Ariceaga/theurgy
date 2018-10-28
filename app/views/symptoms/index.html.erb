@@ -1,10 +1,21 @@
 <div class="notice"> <%= flash[:message] %> </div>
 
-<h1> Symptoms </h1>
+<div class="center">
+  <h1> Symptoms </h1>
+</div>
+
+<div>
+  <% if admin_logged_in? %>
+    <p><a href="<%= new_symptom_path %>" class="black btn">Add a symptom</a></p>
+  <% end %>
+</div>
 
 <ol>
   <% @symptoms.each do |symptom| %>
-    <li><%= symptom.name %> | <%= link_to 'Delete Symptom', symptom, method: :delete, data:{confirm: "Are you sure you want to destroy this symptom?"} %>
+    <li><%= symptom.name %> | <%= link_to 'View Symptom', symptom_path(symptom) %>
+      <% if admin_logged_in? %> 
+        | <%= link_to 'Delete Symptom', symptom, method: :delete, data:{confirm: "Are you sure you want to destroy this symptom?"} %>
+      <% end %>
     </li>
   <% end %>
 </ol>

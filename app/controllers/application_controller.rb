@@ -17,8 +17,15 @@ class ApplicationController < ActionController::Base
 
   def require_log_in
     if !logged_in?
-      flash[:message] = " Please log in or sign up!"
+      flash[:message] = "Please log in or sign up!"
       redirect_to root_path
+    end
+  end
+
+  def admin?
+    if !current_user.admin
+        flash[:message] = "You must be a system administrator to access that action."
+        redirect_to root_path
     end
   end
 end

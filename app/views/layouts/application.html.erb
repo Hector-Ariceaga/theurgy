@@ -18,11 +18,17 @@
         <li>
           <a href="<%= root_url %>"/>Home</a>
         </li>
-        <li>
-          <a href="<%= treatments_path %>"/>Treatments</a>
-        </li>
 
-        <% if logged_in? %>
+        <% if current_user %>
+          <li>
+            <a href="<%= symptoms_url %>"/>Symptoms</a>
+          </li>
+          <li>
+            <a href="<%= diagnoses_url %>"/>Diagnoses</a>
+          </li>
+          <li>
+            <a href="<%= treatments_path %>"/>Treatments</a>
+          </li>
           <li>
             <a href="<%= user_path(current_user) %>"/><%= current_user.name %>'s Profile</a>
           </li>
@@ -34,14 +40,13 @@
           </li>
         <% else %>
           <li>
-            <a href="<%= new_user_url %>"/>
-              <span>Sign Up</span>
-            </a>
+           <a href="<%= treatments_path %>"/>Treatments</a>
           </li>
           <li>
-            <a href="<%= signin_url %>"/>
-              <span>Log In</span>
-            </a>
+            <a href="<%= new_user_url %>"/>Sign Up</a>
+          </li>
+          <li>
+            <a href="<%= signin_url %>"/>Log In</a>
           </li>
           <li class="btn-cta">
             <a href="/auth/facebook"/>

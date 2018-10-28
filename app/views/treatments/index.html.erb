@@ -4,9 +4,18 @@
   <h2> Available Treaments </h2>
 </div>
 
+<div>
+  <% if admin_logged_in? %>
+    <p><a href="<%= new_treatment_path %>" class="black btn">Add a treatment</a></p>
+  <% end %>
+</div>
+
 <ol>
   <% @treatments.each do |treatment| %>
-    <li><%= treatment.name %> | <%= link_to 'Delete Treatment', treatment, method: :delete, data:{confirm: "Are you sure you want to destroy this treatment?"} %>
+    <li><%= treatment.name %> | <%= link_to 'View Treatment', treatment_path(treatment) %>
+      <% if admin_logged_in? %>
+        | <%= link_to 'Delete Treatment', treatment, method: :delete, data:{confirm: "Are you sure you want to destroy this treatment?"} %>
+      <% end %>
     </li>
   <% end %>
 </ol>

@@ -1,5 +1,8 @@
 class DiagnosesController < ApplicationController
   before_action :current_diagnosis, only: [:show, :destroy]
+  before_action :require_log_in, only: [:new, :create, :show, :destroy]
+  before_action :admin?, only: [:new, :create, :destroy]
+  
   def index
     @diagnoses = Diagnosis.all
   end

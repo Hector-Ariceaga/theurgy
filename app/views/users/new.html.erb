@@ -27,6 +27,11 @@
     </div>
 
     <div>
+      <%= f.label :admin, 'Check box if you are a system administrator' %><br>
+      <%= f.check_box :admin %>
+    </div>
+
+    <div>
       <%= f.label :password, 'Password' %><br>
       <%= f.password_field :password %>
     </div>

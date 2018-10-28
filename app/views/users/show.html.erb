@@ -1,3 +1,6 @@
+<div class="btn-outline center">
+  <span><strong><%= admin?(@user) %></strong></span>
+</div>
 <% if @user.email %>
   <div class="pic">
     <img src="<%= @user.image %>" id="img">
@@ -8,8 +11,8 @@
   <h1>Welcome back, <%= @user.username %></h1>
 <% end %>
 
-<% if @user.clinic %>
-  <h2>Clinic: <%= @user.clinic%></h2>
+<% if @user.clinic.blank? %>
+  <h2>Clinic: <%= @user.clinic %></h2>
 <% end %>
 
 <h3><%= @user.name %>'s patients</h3>

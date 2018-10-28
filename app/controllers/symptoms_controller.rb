@@ -1,5 +1,8 @@
 class SymptomsController < ApplicationController
   before_action :current_symptom, only: [:show, :destroy]
+  before_action :require_log_in, only: [:new, :create, :destroy]
+  before_action :admin?, only: [:new, :create, :destroy]
+  
   def index
     @symptoms = Symptom.all
   end

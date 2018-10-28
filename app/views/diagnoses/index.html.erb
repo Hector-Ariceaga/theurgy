@@ -1,11 +1,21 @@
-<div class="container">
+<div class="notice"> <%= flash[:message] %> </div>
+
+<div class="center">
   <h1> Diagnoses </h1>
+</div>
+
+<div>
+  <% if admin_logged_in? %>
+    <p><a href="<%= new_diagnosis_path %>" class="black btn">Add a diagnosis</a></p>
+  <% end %>
+</div>
 
   <ol>
     <% @diagnoses.each do |diagnosis| %>
-      <li><%= diagnosis.name %> | <%= link_to 'Delete Diagnosis', diagnosis, method: :delete, data:{confirm: "Are you sure you want to destroy this diagnosis?"} %>
+      <li><%= diagnosis.name %> | <%= link_to 'View Diagnosis', diagnosis_path(diagnosis) %>
+        <% if admin_logged_in? %> 
+          | <%= link_to 'Delete Diagnosis', diagnosis, method: :delete, data:{confirm: "Are you sure you want to destroy this diagnosis?"} %>
+        <% end %>
       </li>
     <% end %>
   </ol>
-
-</div>
