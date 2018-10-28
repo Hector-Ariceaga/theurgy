@@ -14,8 +14,27 @@ class SessionsController < ApplicationController
     end
   end
 
+  def create_facebook
+    @user = User.find_or_create_by(uid: auth['uid']) do |u|
+      u.name = auth['info']['name']
+      u.email = auth['info']['email']
+      u.image = auth['info']['image']
+      u.password = SecureRandom.urlsafe_base64
+    end
+
+    session[:user_id] = @user.id
+
+    redirect_to user_path(@user)
+  end
+
   def destroy
     reset_session
     redirect_to root_url
+  end
+
+  private 
+  
+  def auth
+    request.env['omniauth.auth']
   end
 end

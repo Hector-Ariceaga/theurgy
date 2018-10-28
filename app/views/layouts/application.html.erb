@@ -22,7 +22,7 @@
           <a href="<%= treatments_path %>"/>Treatments</a>
         </li>
 
-        <% if current_user %>
+        <% if logged_in? %>
           <li>
             <a href="<%= user_path(current_user) %>"/><%= current_user.name %>'s Profile</a>
           </li>
@@ -33,14 +33,19 @@
             <%= link_to 'Log Out', signout_url, method: 'delete'%>
           </li>
         <% else %>
-          <li class="btn-cta">
+          <li>
+            <a href="<%= new_user_url %>"/>
+              <span>Sign Up</span>
+            </a>
+          </li>
+          <li>
             <a href="<%= signin_url %>"/>
               <span>Log In</span>
             </a>
           </li>
           <li class="btn-cta">
-            <a href="<%= new_user_url %>"/>
-              <span>Sign Up</span>
+            <a href="/auth/facebook"/>
+              <span>Log in with Facebook</span>
             </a>
           </li>
         <% end %>
