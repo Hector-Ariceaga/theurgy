@@ -1,11 +1,6 @@
 class PatientsController < ApplicationController
   before_action :require_log_in, only: [:show, :new, :create, :edit, :update, :destroy]
 
-  def index
-    @user = User.find_by(id: params[:user_id])
-    @patients = @user.patients
-  end
-
   def new
     @patient = Patient.new(user_id: params[:user_id])
   end
@@ -44,17 +39,17 @@ class PatientsController < ApplicationController
     @patient = Patient.find(params[:id])
     if @patient.destroy
       flash[:message] = "Patient successfully deleted."
-      redirect_to user_patients_path
+      redirect_to user_path(@patient)
     else
       flash[:message] = "Patient was deletion was unsuccessful."
-      redirect_to user_patients_path
+      redirect_to user_path(@patient)
     end
   end
 
   private
 
   def patient_params
-    params.require(:patient).permit(:name, :dob, :user_id, :symptom_ids, :diagnosis_ids)
+    params.require(:patient).permit(:name, :dob, :user_id, :symptom_ids[], :diagnosis_ids[])
   end
 
   def current_patient
