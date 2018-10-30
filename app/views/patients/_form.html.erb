@@ -1,5 +1,6 @@
-<%= form_for patient, :url => user_patients_path(patient.user) do |f| %>
+<%= form_for [patient.user, patient] do |f| %>
   <%= f.hidden_field :user_id %>
+
   <div>
     <%= f.label :name, "Name" %>
     <%= f.text_field :name %>

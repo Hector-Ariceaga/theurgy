@@ -23,7 +23,7 @@ class PatientsController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:user_id])
-    @patient = @user.patients.find(params[:id])
+    @patient = Patient.find(params[:id])
   end
 
   def edit
@@ -32,8 +32,7 @@ class PatientsController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:user_id])
-    @patient = @user.patients.new
+    @patient = Patient.find(params[:id])
     if @patient.save(patient_params)
       redirect_to user_patient_path(@patient.user, @patient)
     else
