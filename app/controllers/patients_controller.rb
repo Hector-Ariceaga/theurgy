@@ -1,44 +1,48 @@
 class PatientsController < ApplicationController
-  before_action :current_patient, only: [:show, :edit, :update, :destroy]
-  before_action :requre_log_in, only: [:show, :new, :create, :edit, :update, :destroy]
-  before_action :admin? [:index]
+  before_action :require_log_in, only: [:show, :new, :create, :edit, :update, :destroy]
 
   def index
-    @patients = Patients.all
-  end
-
-  def show
+    @user = User.find_by(id: params[:user_id])
+    @patients = @user.patients
   end
 
   def new
-    @user = User.find_by(id: params[:user_id])
-    @patient = Patient.new
+    @patient = Patient.new(user_id: params[:user_id])
   end
 
   def create
-    raise params.inspect
+    @user = User.find(params[:user_id])
     @patient = Patient.new(patient_params)
-    @patient.user = current_user
 
     if @patient.save
-      redirect_to user_patient_path(current_user, @patient)
+      redirect_to user_patient_path(@patient.user, @patient)
     else
       render 'new'
     end
   end
 
+  def show
+    @user = User.find_by(id: params[:user_id])
+    @patient = @user.patients.find(params[:id])
+  end
+
   def edit
+    @user = User.find_by(id: params[:user_id])
+    @patient = @user.patients.find_by(id: params[:id])
   end
 
   def update
-    if @patient.update(patient_params)
-      redirect_to user_patient_path(current_user, @patient)
+    @user = User.find(params[:user_id])
+    @patient = @user.patients.new
+    if @patient.save(patient_params)
+      redirect_to user_patient_path(@patient.user, @patient)
     else
       render 'edit'
     end
   end
 
   def destroy
+    @patient = Patient.find(params[:id])
     if @patient.destroy
       flash[:message] = "Patient successfully deleted."
       redirect_to user_patients_path
@@ -51,7 +55,7 @@ class PatientsController < ApplicationController
   private
 
   def patient_params
-    params.require(:patient).permit(:name, :dob, :symptom_ids[], :diagnosis_ids[])
+    params.require(:patient).permit(:name, :dob, :user_id, :symptom_ids, :diagnosis_ids)
   end
 
   def current_patient

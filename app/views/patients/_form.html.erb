@@ -1,5 +1,5 @@
-<%= form_for @patient do |f| %>
-
+<%= form_for patient, :url => user_patients_path(patient.user) do |f| %>
+  <%= f.hidden_field :user_id %>
   <div>
     <%= f.label :name, "Name" %>
     <%= f.text_field :name %>
@@ -7,10 +7,10 @@
 
   <div>
     <%= f.label :dob, "DOB" %>
-    <%= f.date_field :dob, value: @patient.dob.try(:strftime,"%m/%d/%Y"), placeholder: "mm/dd/yyyy" %>
+    <%= f.date_field :dob, value: patient.dob, placeholder: "mm/dd/yyyy" %>
   </div>
 
-  <div>
+  <!-- <div>
     <%= f.label :symptoms %>
     <%= f.collection_select(:symptom_ids, Symptom.all, :id, :name, {prompt: "Select all associated symptoms..."}) %>
   </div>
@@ -18,7 +18,7 @@
   <div>
     <%= f.label :diagnoses %>
     <%= f.collection_select(:diagnosis_ids, Diagnosis.all, :id, :name, prompt: "Select all associated diagnoses...") %>
-  </div>
+  </div> -->
 
   <%= f.submit %>
 

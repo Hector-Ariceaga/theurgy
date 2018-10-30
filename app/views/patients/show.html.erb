@@ -12,5 +12,5 @@
   <%= diagnosis.name %>
 <% end %>
 
-<%= link_to 'Edit this patient', user_patient_path([current_user, @patient]) %>
+<%= link_to 'Edit this patient', edit_user_patient_path([@user, @patient], id: @user) %>
 <%= link_to 'Delete this patient', method: :delete, data:{confirm: "Are you sure you want to delete this patient?"} %>
