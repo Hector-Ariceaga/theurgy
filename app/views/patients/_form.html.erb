@@ -8,17 +8,27 @@
 
   <div>
     <%= f.label :dob, "DOB" %>
-    <%= f.date_field :dob, value: patient.dob, placeholder: "mm/dd/yyyy" %>
+    <%= f.date_field :dob, value: :dob.try(:strftime,"%m/%d/%Y") %>
   </div>
 
   <div>
     <%= f.label :symptoms %>
-    <%= f.collection_select(:symptom_ids, Symptom.all, :id, :name, {prompt: "Select all associated symptoms..."}) %>
+    <%= f.collection_check_boxes(:symptom_ids, Symptom.all, :id, :name, include_blank: false) do |symptom| %>
+      <p>
+        <%= symptom.label %>
+        <%= symptom.check_box %>
+      </p>
+    <% end %>
   </div>
 
   <div>
-    <%= f.label :diagnoses %>
-    <%= f.collection_select(:diagnosis_ids, Diagnosis.all, :id, :name, prompt: "Select all associated diagnoses...") %>
+    <%= f.label :diagnosis %>
+    <%= f.collection_check_boxes(:diagnosis_ids, Diagnosis.all, :id, :name, include_blank: false) do |diagnosis| %>
+      <p>
+        <%= diagnosis.label %>
+        <%= diagnosis.check_box %>
+      </p>
+    <% end %>
   </div>
 
   <%= f.submit %>

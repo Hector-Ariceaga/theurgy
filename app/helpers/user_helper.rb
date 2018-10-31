@@ -1,5 +1,5 @@
 module UserHelper
-  def admin?(user)
+  def admin_header?(user)
     if !!user.admin
       "ADMIN"
     end

@@ -1,5 +1,5 @@
 <div class="btn-outline center">
-  <span><strong><%= admin?(@user) %></strong></span>
+  <span><strong><%= admin_header?(@user) %></strong></span>
 </div>
 <% if @user.email %>
   <div class="pic">
@@ -26,6 +26,3 @@
     </tr>
   <% end %>
 </table>
-
-#if admin show highest risk patients
-
