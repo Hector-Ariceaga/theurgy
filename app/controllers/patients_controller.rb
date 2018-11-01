@@ -52,7 +52,4 @@ class PatientsController < ApplicationController
     params.require(:patient).permit(:name, :dob, :user_id, symptom_ids:[], diagnosis_ids:[])
   end
 
-  def current_patient
-    @patient = Patient.find(params[:id])
-  end
 end

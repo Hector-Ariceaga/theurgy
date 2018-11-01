@@ -3,10 +3,10 @@ class Therapy < ActiveRecord::Base
   belongs_to :treatment
 
   def active?
-    if self.active == true
-      "#{self.patient}'s treatment(#{self.treatment}) is active."
+    if !!self.active
+      "#{self.patient.name}'s treatment(#{self.treatment.name}) is active."
     else
-      "#{self.patient}'s treatment(#{self.treatment}) is not active."
+      "#{self.patient.name}'s treatment(#{self.treatment.name}) is not active."
     end
   end
 

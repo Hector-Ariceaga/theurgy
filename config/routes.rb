@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   resources :symptoms, only: COMMON_ROUTES 
   resources :diagnoses, only: COMMON_ROUTES 
   resources :treatments
+  resources :therapies, only: [:create, :edit, :update, :destroy]
 end
