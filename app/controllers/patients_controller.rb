@@ -1,12 +1,13 @@
 class PatientsController < ApplicationController
   before_action :require_log_in, only: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :current_patient, only: [:show, :edit, :update, :destroy]
 
   def new
     @patient = Patient.new(user_id: params[:user_id])
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @patient = Patient.new(patient_params)
 
     if @patient.save
@@ -17,17 +18,14 @@ class PatientsController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:user_id])
-    @patient = Patient.find(params[:id])
+    @user = current_user
   end
 
   def edit
-    @user = User.find_by(id: params[:user_id])
-    @patient = @user.patients.find_by(id: params[:id])
+    @user = current_user
   end
 
   def update
-    @patient = Patient.find(params[:id])
     if @patient.update(patient_params)
       redirect_to user_patient_path(@patient.user, @patient)
     else
@@ -36,7 +34,6 @@ class PatientsController < ApplicationController
   end
 
   def destroy
-    @patient = Patient.find(params[:id])
     if @patient.destroy
       flash[:message] = "Patient successfully deleted."
       redirect_to user_path(@patient)
@@ -49,7 +46,10 @@ class PatientsController < ApplicationController
   private
 
   def patient_params
-    params.require(:patient).permit(:name, :dob, :user_id, symptom_ids:[], diagnosis_ids:[])
+    params.require(:patient).permit(:patient_id, :name, :dob, :user_id, symptom_ids:[], diagnosis_ids:[])
   end
 
+  def current_patient
+    @patient = Patient.find(params[:id])
+  end
 end

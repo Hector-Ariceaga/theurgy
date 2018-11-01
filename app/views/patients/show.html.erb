@@ -5,9 +5,11 @@
 <h3>Current Symptoms</h3>
 
 <% if @patient.symptoms.any? %>
-  <% @patient.symptoms.each do |symptom| %>
-    <%= symptom.name %>
-  <% end %>
+  <ol>
+    <% @patient.symptoms.each do |symptom| %>
+      <li><%= symptom.name %></li>
+    <% end %>
+  </ol>
 <% else %>
     <p>There are currently no symptoms associated with this patient.</p>
   <% end %>
@@ -15,8 +17,11 @@
 <h3>Current Diagnoses</h3>
 
 <% if @patient.diagnoses.any? %>
-  <% @patient.diagnoses.each do |diagnosis| %>
-  <% end %>
+  <ol>
+    <% @patient.diagnoses.each do |diagnosis| %>
+      <li><%= diagnosis.name %></li>
+    <% end %>
+  </ol>
 <% else %>
     <p>There are currently no diagnoses associated with this patient.</p>
 <% end %>
