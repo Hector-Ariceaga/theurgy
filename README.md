@@ -1,7 +1,7 @@
 # Theurgy
 A rails web application for managing and tracking mental health treatment.
 
-This web app was designed for 
+This web app was designed for health providers that want to track their patient's mental health symptoms, diagnoses, and treatments.
 
 ## Installation
 
@@ -11,7 +11,7 @@ And then execute:
 
     $ bundle install
     $ rake db:migrate
-    
+
 If you would like to experiment with the application using seed data, then execute:
 
     $ rake db:seed
@@ -22,8 +22,7 @@ Finally, run:
 
 ## Usage
 
-Start by
-
+Visitors can view avialable treatments and the home page without logging in. If a user would like to utilize the functionality of the application they must register and sign in. Once registered, a standard user can access their patient list and view potential symptoms, diagnoses, and treatments. Standard users can also log in using Facebook. Standard users that have logged in can add to and edit their patients, as well as assign their patients treatments and designate the status of that treatment (active vs. inactive). If a user is created with adminstrative privelages, that user has the same access as a standard user and in addition can alter the available symptoms, diagnoses, and treatments available in the application.
 
 ## Contributing
 
