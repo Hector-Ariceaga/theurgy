@@ -16,7 +16,7 @@ symptom5 = Symptom.create(name: 'Psychomotor retardation')
 symptom6 = Symptom.create(name: 'Psychomotor Agitation')
 symptom7 = Symptom.create(name: 'Suicidal Ideation')
 
-diagnosis1 = Diagnosis.create(name: 'Major Depressive Disorer')
+diagnosis1 = Diagnosis.create(name: 'Major Depressive Disorder')
 diagnosis2 = Diagnosis.create(name: 'Generalized Anxiety Disorder')
 diagnosis3 = Diagnosis.create(name: 'Bipolar Disorder I')
 diagnosis4 = Diagnosis.create(name: 'Bipolar Disorder II')

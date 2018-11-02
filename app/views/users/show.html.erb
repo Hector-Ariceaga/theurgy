@@ -11,7 +11,7 @@
   <h1>Welcome back, <%= @user.username %></h1>
 <% end %>
 
-<% if @user.clinic.blank? %>
+<% if !@user.clinic.blank? %>
   <h2>Clinic: <%= @user.clinic %></h2>
 <% end %>
 
