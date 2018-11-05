@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+
   def new
+    already_logged_in?
     @user = User.new
   end
 
