@@ -13,7 +13,7 @@
 
   <div>
     <%= f.label :symptoms %>
-    <%= f.collection_check_boxes(:symptom_ids, Symptom.all, :id, :name, include_blank: false) do |symptom| %>
+    <%= f.collection_check_boxes(:symptom_ids, Symptom.all, :id, :name) do |symptom| %>
       <p>
         <%= symptom.label %>
         <%= symptom.check_box %>
@@ -23,7 +23,7 @@
 
   <div>
     <%= f.label :diagnosis %>
-    <%= f.collection_check_boxes(:diagnosis_ids, Diagnosis.all, :id, :name, include_blank: false) do |diagnosis| %>
+    <%= f.collection_check_boxes(:diagnosis_ids, Diagnosis.all, :id, :name) do |diagnosis| %>
       <p>
         <%= diagnosis.label %>
         <%= diagnosis.check_box %>

@@ -1,19 +1,19 @@
 class DiagnosesController < ApplicationController
   before_action :current_diagnosis, only: [:show, :destroy]
-  before_action :require_log_in, only: [:new, :create, :show, :destroy]
-  before_action :admin?, only: [:new, :create, :destroy]
-  
+  before_action :require_log_in, except: [:index, :show]
+  before_action :admin?, except: [:index, :show]
+
   def index
     @diagnoses = Diagnosis.all
   end
-  
+
   def new
     @diagnosis = Diagnosis.new
   end
 
   def create
     @diagnosis = Diagnosis.new(diagnosis_params)
-    
+
     if @diagnosis.save
       flash[:message] = "New diagnosis successfully created."
       redirect_to diagnosis_path(@diagnosis)
@@ -27,10 +27,10 @@ class DiagnosesController < ApplicationController
 
   def destroy
     if @diagnosis.destroy
-      flash[:message] = "diagnosis successfully deleted."
+      flash[:message] = "Diagnosis successfully deleted."
       redirect_to diagnosis_path
     else
-      flash[:message] = "diagnosis deletion was unsuccessful"
+      flash[:message] = "Diagnosis deletion was unsuccessful"
       redirect_to diagnosis_path
     end
   end

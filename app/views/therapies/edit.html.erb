@@ -1,9 +1,11 @@
+<div class="notice"> <%= flash[:message] %> </div>
+
 <h1> Therapy Status </h1>
 
 <%= form_for @therapy do |f| %>
   <%= f.radio_button :active, true, :checked => !!@therapy.active  %>
   <%= f.label :active, 'Active' %><br>
-  
+
   <%= f.radio_button :active, false, :checked => !@therapy.active %>
   <%= f.label :active, 'Not Active' %><br>
 

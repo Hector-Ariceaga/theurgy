@@ -1,6 +1,7 @@
 class PatientsController < ApplicationController
-  before_action :require_log_in, only: [:show, :new, :create, :edit, :update, :destroy]
-  before_action :current_patient, only: [:show, :edit, :update, :destroy]
+  before_action :require_log_in
+  before_action :current_patient, except: [:new, :create]
+  before_action :current_user, only: [:show, :edit]
 
   def new
     @patient = Patient.new(user_id: params[:user_id])

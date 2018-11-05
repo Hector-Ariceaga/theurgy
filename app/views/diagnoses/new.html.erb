@@ -1,12 +1,12 @@
-<div class="container">
-  <h1>Create a New Diagnosis</h1>
+<div class="notice"> <%= flash[:message] %> </div>
 
-  <%= form_for @diagnosis do |f| %>
-    <div>
-      <%= f.label :name, "Name" %>
-      <%= f.text_field :name %>
-    </div>
-    
-    <%= f.submit "Create Diagnosis" %>
-  <% end %>
-</div>
+<h1>Create a New Diagnosis</h1>
+
+<%= form_for @diagnosis do |f| %>
+  <div>
+    <%= f.label :name, "Name" %>
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.submit "Create Diagnosis" %>
+<% end %>

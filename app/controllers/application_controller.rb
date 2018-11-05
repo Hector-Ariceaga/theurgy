@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
-    if !current_user.admin
+    if current_user && !current_user.admin
         flash[:message] = "You must be a system administrator to access that action."
         redirect_to root_path
     end

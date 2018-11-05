@@ -1,7 +1,7 @@
 class TherapiesController < ApplicationController
-  before_action :current_therapy, only: [:show, :edit, :update]
-  before_action :require_log_in, only: [:create, :show, :edit, :update]
-  
+  before_action :current_therapy, only: [:edit, :update]
+  before_action :require_log_in
+
   def create
     @therapy = Therapy.new(patient_id: params[:patient_id], active: params[:active], treatment_id: params[:therapy][:treatment_id])
 

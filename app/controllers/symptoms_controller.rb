@@ -1,12 +1,12 @@
 class SymptomsController < ApplicationController
   before_action :current_symptom, only: [:show, :destroy]
-  before_action :require_log_in, only: [:new, :create, :destroy]
-  before_action :admin?, only: [:new, :create, :destroy]
-  
+  before_action :require_log_in, except: [:index, :show]
+  before_action :admin?, except: [:index, :show]
+
   def index
     @symptoms = Symptom.all
   end
-  
+
   def show
   end
 
@@ -16,7 +16,7 @@ class SymptomsController < ApplicationController
 
   def create
     @symptom = Symptom.new(symptom_params)
-    
+
     if @symptom.save
       flash[:message] = "New symptom successfully created."
       redirect_to symptom_path(@symptom)
