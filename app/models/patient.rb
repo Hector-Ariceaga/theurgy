@@ -7,7 +7,7 @@ class Patient < ActiveRecord::Base
   belongs_to :user
 
   def self.highest_risk_patients
-    joins(:therapies).group("patients.id").having("COUNT(treatment_id) > ?, 2").limit(10)
+    joins(:therapies).group("patients.id").having("COUNT(treatment_id) > ?", 2).limit(10)
   end
 
 end

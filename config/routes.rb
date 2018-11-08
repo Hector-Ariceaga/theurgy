@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   COMMON_ROUTES = [:index, :new, :create, :show, :destroy]
-  
+
   root 'welcome#home'
 
   get '/signin', to: 'sessions#new'
@@ -8,12 +8,13 @@ Rails.application.routes.draw do
   delete '/signout', to: 'sessions#destroy'
   get '/auth/facebook/callback', to: 'sessions#create_facebook'
 
+  get '/high_risk', to: 'patients#high_risk'
   resources :users, only: [:new, :create, :show] do
     resources :patients
   end
-  
-  resources :symptoms, only: COMMON_ROUTES 
-  resources :diagnoses, only: COMMON_ROUTES 
+
+  resources :symptoms, only: COMMON_ROUTES
+  resources :diagnoses, only: COMMON_ROUTES
   resources :treatments
   resources :therapies, only: [:create, :edit, :update, :destroy]
 end
