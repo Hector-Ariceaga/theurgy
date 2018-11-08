@@ -1,7 +1,9 @@
 class PatientsController < ApplicationController
   before_action :require_log_in
+  before_action :admin?, only: [:high_risk]
   before_action :current_patient, except: [:new, :create]
   before_action :current_user, only: [:show, :edit]
+  helper_method :current_patient
 
   def new
     @patient = Patient.new(user_id: params[:user_id])
@@ -19,11 +21,13 @@ class PatientsController < ApplicationController
   end
 
   def show
-    @user = current_user
+  end
+
+  def high_risk
+    @high_risk_patients = Patient.highest_risk_patients
   end
 
   def edit
-    @user = current_user
   end
 
   def update
@@ -51,6 +55,6 @@ class PatientsController < ApplicationController
   end
 
   def current_patient
-    @patient = Patient.find(params[:id])
+    @patient = Patient.find_by(id: params[:id])
   end
 end

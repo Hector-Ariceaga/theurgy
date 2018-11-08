@@ -1,0 +1,7 @@
+<h1> Highest Risk Patients </h1>
+
+<ol>
+  <% @high_risk_patients.each do |patient| %>
+    <li> <%= patient.name %>, provider: <%= patient.user.name %> | <%= link_to 'Patient Details', user_patient_path(patient.user, patient) %> </li>
+  <% end %>
+</ol>

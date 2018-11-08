@@ -13,6 +13,12 @@
   <h1>Welcome back, <%= @user.username %></h1>
 <% end %>
 
+<% if admin_logged_in? %>
+  <div class="center">
+    <%= link_to 'View Highest Risk Patients', high_risk_path %>
+  </div>
+<% end %>
+
 <% if !@user.clinic.blank? %>
   <h2>Clinic: <%= @user.clinic %></h2>
 <% end %>
