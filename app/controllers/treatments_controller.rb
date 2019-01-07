@@ -5,9 +5,17 @@ class TreatmentsController < ApplicationController
 
   def index
     @treatments = Treatment.all
+    respond_to do |f|
+      f.html
+      f.json {render json: @treatments}
+    end
   end
 
   def show
+    respond_to do |f|
+      f.html
+      f.json {render json: @treatment}
+    end
   end
 
   def new
