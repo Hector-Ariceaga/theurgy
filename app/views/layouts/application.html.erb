@@ -27,7 +27,7 @@
             <a href="<%= diagnoses_url %>"/>Diagnoses</a>
           </li>
           <li>
-            <a href="<%= treatments_path %>"/>Treatments</a>
+            <a href="<%= treatments_path %>" class="all_treatments"/>Treatments</a>
           </li>
           <li>
             <a href="<%= user_path(current_user) %>"/><%= current_user.name %>'s Profile</a>
@@ -40,7 +40,7 @@
           </li>
         <% else %>
           <li>
-           <a href="<%= treatments_path %>"/>Treatments</a>
+           <a href="<%= treatments_path %>" class="all_treatments"/>Treatments</a>
           </li>
           <li>
             <a href="<%= new_user_url %>"/>Sign Up</a>
@@ -56,7 +56,7 @@
         <% end %>
       </ul>
     </nav>
-    
+
     <div class="container">
       <%= yield %>
     </div>
