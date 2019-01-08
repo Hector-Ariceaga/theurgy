@@ -32,7 +32,7 @@
     <% @user.patients.each do |patient| %>
       <tr>
         <td><%= patient.name %></td>
-        <td><%= link_to 'View Patient Details', [patient.user, patient]%></td>
+        <td><%= link_to 'View Patient Details', [patient.user, patient], class: "show_patient", "data-patient" => patient.id, "data-user" => patient.user.id %></td>
         <td><%= link_to 'Delete patient', [patient.user, patient], method: :delete, data:{confirm: "Are you sure you want to delete this patient?"} %></td>
       </tr>
     <% end %>
