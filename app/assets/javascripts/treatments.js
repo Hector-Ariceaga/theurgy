@@ -10,8 +10,25 @@ const bindEventHandlers = () => {
       url: '/treatments.json'
     })
     .done(function(treatments) {
-      $('.container').html('')
-      treatments.forEach(treatment => console.log(treatment))
+      $('.container').html('<ol></ol>')
+      treatments.forEach(treatment => {
+        let newTreatment = new Treatment(treatment)
+        let treatmentHtml = newTreatment.indexHtml()
+        $('.container ol').append(treatmentHtml)
+      })
     })
   })
+}
+
+function Treatment(treatment) {
+  this.id = treatment.id
+  this.name = treatment.name
+  this.details = treatment.details
+}
+
+Treatment.prototype.indexHtml = function() {
+  let treatmentHtml = `
+  <li>${this.name} | <a href="/treatments/${this.id}">View Treatment</a></li>
+  `
+  return treatmentHtml
 }
