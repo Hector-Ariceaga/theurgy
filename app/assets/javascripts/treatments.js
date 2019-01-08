@@ -1,8 +1,8 @@
 $(document).on('turbolinks:load', function() {
-  bindEventHandlers()
+  bindTreatmentEventHandlers()
 })
 
-const bindEventHandlers = () => {
+const bindTreatmentEventHandlers = () => {
   $('.all_treatments').click(function(e){
     e.preventDefault()
     $.ajax({
