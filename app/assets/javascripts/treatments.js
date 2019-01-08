@@ -35,8 +35,6 @@ const bindEventHandlers = () => {
   })
 }
 
-
-
 function Treatment(treatment) {
   this.id = treatment.id
   this.name = treatment.name

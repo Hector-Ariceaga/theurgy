@@ -1,5 +1,5 @@
 class TherapiesController < ApplicationController
-  before_action :current_therapy, only: [:edit, :update]
+  before_action :current_therapy, only: [:show, :edit, :update]
   before_action :require_log_in
 
   def create
@@ -12,6 +12,10 @@ class TherapiesController < ApplicationController
       flash[:message] = "Adding a therapy was unsuccessful."
       redirect_to user_patient_path(current_user, @therapy.patient)
     end
+  end
+
+  def show
+    render json: @therapy
   end
 
   def edit
