@@ -3,11 +3,13 @@ class TherapiesController < ApplicationController
   before_action :require_log_in
 
   def create
+
     @therapy = Therapy.new(patient_id: params[:patient_id], active: params[:active], treatment_id: params[:therapy][:treatment_id])
+
 
     if @therapy.save
       flash[:message] = "Sucessfully added a therapy."
-      redirect_to user_patient_path(current_user, @therapy.patient)
+      render 'therapies/show', :layout => false
     else
       flash[:message] = "Adding a therapy was unsuccessful."
       redirect_to user_patient_path(current_user, @therapy.patient)
