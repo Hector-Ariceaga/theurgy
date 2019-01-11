@@ -27,15 +27,17 @@
 <% end %>
 
 <h3>Current Treatments</h3>
-<ol class="all-therapies">
+<div>
   <% if @patient.therapies.any? %>
+    <ol class="all-therapies">
       <% @patient.therapies.each do |therapy| %>
           <li><%= therapy.active? %> | <%= link_to 'Details', treatment_path(therapy.treatment) %> | <%= link_to 'Edit Therapy', edit_therapy_path(therapy) %> | <%= link_to 'Delete', therapy, method: :delete, data: {confirm: "Are you sure you want to delte this therapy?"} %></li>
       <% end %>
+    </ol>
   <% else %>
       <p>There are currently no diagnoses associated with this patient.</p>
   <% end %>
-</ol>
+</div>
 
 <h3>Available Treatments</h3>
 
