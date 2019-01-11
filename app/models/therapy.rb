@@ -1,6 +1,8 @@
 class Therapy < ActiveRecord::Base
   belongs_to :patient
   belongs_to :treatment
+  validates :patient_id, presence: true
+  validates :treatment_id, presence: true
 
   def active?
     if !!self.active

@@ -7,7 +7,6 @@ const bindTherapyEventHandlers = () => {
     e.preventDefault()
     url = this.action
     data = $(this).serialize()
-    debugger
     $.ajax({
       method: 'post',
       url: url,

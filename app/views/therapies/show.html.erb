@@ -1,1 +1,1 @@
-<li><%= @therapy.active? %></li>
+<li><%= @therapy.active? %> | <%= link_to 'Details', treatment_path(@therapy.treatment) %> | <%= link_to 'Edit Therapy', edit_therapy_path(@therapy) %> | <%= link_to 'Delete', @therapy, method: :delete, data: {confirm: "Are you sure you want to delte this therapy?"} %></li>
