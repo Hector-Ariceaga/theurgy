@@ -12,6 +12,7 @@ const bindTherapyEventHandlers = () => {
       url: url,
       data: data,
       success: function(res){
+        $('.no-therapy').html('')
         $('.all-therapies').append(res)
       }
     })

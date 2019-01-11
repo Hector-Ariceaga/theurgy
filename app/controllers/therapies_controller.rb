@@ -53,5 +53,4 @@ class TherapiesController < ApplicationController
   def therapy_params
     params.require(:therapy).permit(:patient_id, :active, :treatment_id)
   end
-  #should private params be used here?
 end
