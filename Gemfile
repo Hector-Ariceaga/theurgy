@@ -34,7 +34,7 @@ gem 'dotenv-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
-
+gem 'pry'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
