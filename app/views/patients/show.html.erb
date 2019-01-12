@@ -42,7 +42,7 @@
 
 <h3>Available Treatments</h3>
 
-<%= form_tag '/therapies', action: "create", method: 'post', id: 'new-therapy', remote: true do %>
+<%= form_tag '/therapies', action: "create", method: 'post', id: 'new-therapy' do %>
   <%= hidden_field_tag :patient_id, current_patient.id %>
   <%= hidden_field_tag :active, true %>
   <%= collection_select(:therapy, :treatment_id, Treatment.all, :id, :name, {prompt: "Select Treatment"}) %>

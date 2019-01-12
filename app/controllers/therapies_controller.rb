@@ -6,10 +6,9 @@ class TherapiesController < ApplicationController
 
     @therapy = Therapy.new(patient_id: params[:patient_id], active: params[:active], treatment_id: params[:therapy][:treatment_id])
 
-
     if @therapy.save
       flash[:message] = "Sucessfully added a therapy."
-      render 'therapies/show', :layout => false
+      render json: @therapy
     else
       flash[:message] = "Adding a therapy was unsuccessful."
       redirect_to user_patient_path(current_user, @therapy.patient)
