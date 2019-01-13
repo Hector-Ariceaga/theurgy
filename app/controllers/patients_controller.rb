@@ -35,9 +35,14 @@ class PatientsController < ApplicationController
   end
 
   def update
-    if @patient.update(patient_params)
+    if reset_symptoms?
+      @patient.symptom_ids = []
+      @patient.save
+      redirect_to user_patient_path(@patient.user, @patient)
+    elsif @patient.update_attributes(patient_params)
       redirect_to user_patient_path(@patient.user, @patient)
     else
+      flash[:message] = "Patient was edit was unsuccessful."
       render 'edit'
     end
   end
@@ -55,10 +60,16 @@ class PatientsController < ApplicationController
   private
 
   def patient_params
-    params.require(:patient).permit(:patient_id, :name, :dob, :user_id, symptom_ids:[], diagnosis_ids:[])
+    params.require(:patient).permit(:patient_id, :name, :dob, :user_id, symptoms:[], diagnosis_ids:[])
   end
 
   def current_patient
     @patient = Patient.find_by(id: params[:id])
   end
+
+  def reset_symptoms?
+    ids = params[:patient][:symptom_ids].reject{|el| el.empty?}
+    ids.empty?
+  end
+
 end

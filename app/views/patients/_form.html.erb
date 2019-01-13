@@ -12,14 +12,11 @@
   </div>
 
   <div>
-    <%= f.label :symptoms %>
-    <%= f.collection_check_boxes(:symptom_ids, Symptom.all, :id, :name) do |symptom| %>
-      <p>
-        <%= symptom.label %>
-        <%= symptom.check_box %>
-      </p>
-    <% end %>
+  <%= f.label :symptoms %>
+  <%= f.collection_select :symptom_ids, Symptom.order('name COLLATE NOCASE ASC'), :id, :name, {include_blank: 'Remove All', include_hidden: false}, {multiple: true} %>
   </div>
+  
+  
 
   <div>
     <%= f.label :diagnosis %>
