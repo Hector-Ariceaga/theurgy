@@ -18,14 +18,10 @@
   
   
 
+  
   <div>
-    <%= f.label :diagnosis %>
-    <%= f.collection_check_boxes(:diagnosis_ids, Diagnosis.all, :id, :name) do |diagnosis| %>
-      <p>
-        <%= diagnosis.label %>
-        <%= diagnosis.check_box %>
-      </p>
-    <% end %>
+  <%= f.label :diagnoses %>
+  <%= f.collection_select :diagnosis_ids, Diagnosis.order('name COLLATE NOCASE ASC'), :id, :name, {include_blank: 'Remove All', include_hidden: false}, {multiple: true} %>
   </div>
 
   <%= f.submit %>
