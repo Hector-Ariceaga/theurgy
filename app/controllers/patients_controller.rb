@@ -66,18 +66,22 @@ class PatientsController < ApplicationController
   end
 
   def reset_symptoms?
-    ids = params[:patient][:symptom_ids].reject{|el| el.empty?}
-    if ids.empty?
-      @patient.symptom_ids = []
-      @patient.save
+    if params[:patient][:symptom_ids]
+      ids = params[:patient][:symptom_ids].reject{|el| el.empty?}
+      if ids.empty?
+        @patient.symptom_ids = []
+        @patient.save
+      end
     end
   end
 
   def reset_diagnoses?
-    ids = params[:patient][:diagnosis_ids].reject{|el| el.empty?}
-    if ids.empty?
-      @patient.diagnosis_ids = []
-      @patient.save
+    if params[:patient][:diagnosis_ids]
+      ids = params[:patient][:diagnosis_ids].reject{|el| el.empty?}
+      if ids.empty?
+        @patient.diagnosis_ids = []
+        @patient.save
+      end
     end
   end
 

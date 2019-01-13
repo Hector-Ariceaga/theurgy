@@ -3,10 +3,10 @@ user2 = User.new(name: "Admin User", username: 'a_user', admin: true, password: 
 user1.save
 user2.save
 
-patient1 = user1.patients.create(name: 'John Smith', dob: 1980-01-01)
-patient2 = user1.patients.create(name: 'Jane Smith', dob: 1990-01-01)
-patient3 = user1.patients.create(name: 'John Doe', dob: 1970-02-02)
-patient4 = user1.patients.create(name: 'Jane Doe', dob: 1975-03-03)
+patient1 = user1.patients.create(name: 'John Smith', dob: DateTime.strptime("09/14/2009 8:00", "%m/%d/%Y %H:%M"))
+patient2 = user1.patients.create(name: 'Jane Smith', dob: DateTime.strptime("01/12/1980 6:00", "%m/%d/%Y %H:%M"))
+patient3 = user1.patients.create(name: 'John Doe', dob: DateTime.strptime("09/12/2000 12:00", "%m/%d/%Y %H:%M"))
+patient4 = user1.patients.create(name: 'Jane Doe', dob: DateTime.strptime("02/08/1956 2:00", "%m/%d/%Y %H:%M"))
 
 symptom1 = Symptom.create(name: 'Depression')
 symptom2 = Symptom.create(name: 'Anxiety')
