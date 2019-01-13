@@ -36,13 +36,14 @@ Patient.prototype.showHtml = function(){
     <div class="notice"><span>Patient successfully created</span></div>
 
     <div class="patient_demographics">
-      <h1 class="center">${this.name} (${this.formatDateTime()})</h1>
-      <h2 class="center"> (${this.formatDateTime()})</h2>
+      <h1 class="center">${this.name}</h1>
+      <h2 class="center"> Date of Birth: ${this.formatDateTime()}</h2>
     </div>
 
     <h3>Current Symptoms</h3>
     
     <div class="patient_symptoms">
+      ${this.symptomCheck()}
       <ol>
         ${this.symptoms.map(symptom => `<li>${symptom.name}</li>`)}
       </ol>
@@ -51,6 +52,7 @@ Patient.prototype.showHtml = function(){
     <h3>Current Diagnoses</h3>
     
     <div class="patient_diagnoses">
+      ${this.symptomCheck()}
       <ol>
         ${this.diagnoses.map(diagnosis => `<li>${diagnosis.name}</li>`)}
       </ol>
@@ -69,4 +71,22 @@ Patient.prototype.formatDateTime = function(){
 
   let dateString = `${day}/${month+1}/${year}`;
   return dateString
+}
+
+Patient.prototype.symptomCheck = function(){
+  if(!Array.isArray(this.symptoms) || !this.symptoms.length) {
+    return `<p>There are no symptoms yet associated with your new patient.</p>`
+  }
+  else {
+    return ''
+  }
+}
+
+Patient.prototype.diagnosisCheck = function(){
+  if(!Array.isArray(this.diagnosis) || !this.diagnosis.length) {
+    return `<p>There are no diagnoses yet associated with your new patient.</p>`
+  }
+  else {
+    return ''
+  }
 }
