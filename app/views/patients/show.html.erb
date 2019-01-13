@@ -6,7 +6,7 @@
 
 <% if @patient.symptoms.any? %>
   <ol>
-    <% @patient.symptoms.each do |symptom| %>
+    <% @patient.symptoms.order('name COLLATE NOCASE ASC').each do |symptom| %>
       <li><%= symptom.name %></li>
     <% end %>
   </ol>
