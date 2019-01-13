@@ -32,13 +32,12 @@ function Patient(patient) {
 }
 
 Patient.prototype.showHtml = function(){
-  debugger
   let patientHtml= `
     <div class="notice"><span>Patient successfully created</span></div>
 
     <div class="patient_demographics">
-      <h1 class="center">${this.name}</h1>
-      <h3 class="center>${this.dob}</h3>
+      <h1 class="center">${this.name} (${this.formatDateTime()})</h1>
+      <h2 class="center"> (${this.formatDateTime()})</h2>
     </div>
 
     <h3>Current Symptoms</h3>
@@ -61,3 +60,13 @@ Patient.prototype.showHtml = function(){
     return patientHtml
 }
 
+Patient.prototype.formatDateTime = function(){
+  let dob = new Date(this.dob);
+
+  let day = dob.getDate();
+  let month = dob.getMonth();
+  let year = dob.getFullYear();
+
+  let dateString = `${day}/${month+1}/${year}`;
+  return dateString
+}
