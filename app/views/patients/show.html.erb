@@ -1,33 +1,37 @@
 <div class="notice"> <%= flash[:message] %> </div>
 
-<h1><%= @patient.name %></h1>
+<div class="patient_name">
+  <h1><%= @patient.name %></h1>
+</div>
 
 <h3>Current Symptoms</h3>
-
-<% if @patient.symptoms.any? %>
-  <ol>
-    <% @patient.symptoms.order('name COLLATE NOCASE ASC').each do |symptom| %>
-      <li><%= symptom.name %></li>
-    <% end %>
-  </ol>
-<% else %>
-    <p>There are currently no symptoms associated with this patient.</p>
+<div class="patient_symptoms">
+  <% if @patient.symptoms.any? %>
+    <ol>
+      <% @patient.symptoms.order('name COLLATE NOCASE ASC').each do |symptom| %>
+        <li><%= symptom.name %></li>
+      <% end %>
+    </ol>
+  <% else %>
+      <p>There are currently no symptoms associated with this patient.</p>
   <% end %>
+</div>
 
 <h3>Current Diagnoses</h3>
-
-<% if @patient.diagnoses.any? %>
-  <ol>
-    <% @patient.diagnoses.each do |diagnosis| %>
-      <li><%= diagnosis.name %></li>
-    <% end %>
-  </ol>
-<% else %>
-    <p>There are currently no diagnoses associated with this patient.</p>
-<% end %>
+<div class="patient_diagnoses">
+  <% if @patient.diagnoses.any? %>
+    <ol>
+      <% @patient.diagnoses.each do |diagnosis| %>
+        <li><%= diagnosis.name %></li>
+      <% end %>
+    </ol>
+  <% else %>
+      <p>There are currently no diagnoses associated with this patient.</p>
+  <% end %>
+</div>
 
 <h3>Current Treatments</h3>
-<div>
+<div class="patient_treatments">
   <% if @patient.therapies.any? %>
     <ol class="all-therapies">
       <% @patient.therapies.each do |therapy| %>

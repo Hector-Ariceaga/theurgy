@@ -12,11 +12,12 @@ class PatientsController < ApplicationController
   def create
     @user = current_user
     @patient = Patient.new(patient_params)
-
+    
     if @patient.save
-      redirect_to user_patient_path(@patient.user, @patient)
+      flash[:message] = "Sucessfully added a patient."
+      render json: @patient
     else
-      render 'new'
+      flash[:message] = "Adding patient was unsuccessful."
     end
   end
 
