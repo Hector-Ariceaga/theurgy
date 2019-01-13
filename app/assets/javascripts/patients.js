@@ -1,14 +1,16 @@
 $(document).on('turbolinks:load', function() {
-  // bindPatientEventHandlers()
+  bindPatientEventHandlers()
 })
 
 const bindPatientEventHandlers = () => {
-  $('.show_patient').click(function(e){
+  $('.new_patient').on('submit', function(e){
     e.preventDefault()
-    let patient_id = $('#patient_id')
+    url = this.action
+    data = $(this).serialize()
     $.ajax({
-      method: 'get',
-      url: `/users/${user_id}/patients/${patient_id}.json`
+      method: 'post',
+      url: url,
+      data: data
     })
     .done(function(patient){
       $('.container').html('')
