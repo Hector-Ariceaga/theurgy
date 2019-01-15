@@ -52,7 +52,7 @@ Patient.prototype.showHtml = function(){
     <h3>Current Diagnoses</h3>
     
     <div class="patient_diagnoses">
-      ${this.symptomCheck()}
+      ${this.diagnosisCheck()}
       <ol>
         ${this.diagnoses.map(diagnosis => `<li>${diagnosis.name}</li>`)}
       </ol>
