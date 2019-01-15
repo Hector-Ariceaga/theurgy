@@ -83,7 +83,7 @@ Patient.prototype.symptomCheck = function(){
 }
 
 Patient.prototype.diagnosisCheck = function(){
-  if(!Array.isArray(this.diagnosis) || !this.diagnosis.length) {
+  if(!Array.isArray(this.diagnoses) || !this.diagnoses.length) {
     return `<p>There are no diagnoses yet associated with your new patient.</p>`
   }
   else {
