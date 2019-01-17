@@ -25,6 +25,8 @@
 
 <h3><%= @user.name %>'s patients</h3>
 
+<button class="sort-button" data-userId="<%=@user.id%>">Sort Patients By Name</button>
+
 <% if @user.patients.none? %>
   <p><%= @user.name %> does not currently have any patients.</p>
 <% else %>

@@ -19,6 +19,21 @@ const bindPatientEventHandlers = () => {
       $('.container').append(patientHtml)
     })
   })
+  $('.sort-button').on('click', function(e){
+    e.preventDefault()
+    let userId = this.dataset.userid
+    let url = `/users/${userId}.json`
+    $.ajax({
+      method: 'get',
+      url: url
+    })
+    .done(function(user) {
+      $('.container').html('<ol></ol>')
+      let sortedPatients =  sortPatients(user)
+      let sortedListHtml = sortedHtml(sortedPatients)
+      $('.container ol').append(sortedListHtml)
+    })
+  })
 }
 
 function Patient(patient) {
@@ -89,4 +104,14 @@ Patient.prototype.diagnosisCheck = function(){
   else {
     return ''
   }
+}
+
+let sortPatients = (user) => {
+  return user.patients.sort(function(a,b){
+    return (a.name > b.name) ? 0 : -1
+  })
+}
+
+let sortedHtml = (patients) => {
+  return patients.map(patient => `<li>${patient.name}</li>`)
 }

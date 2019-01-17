@@ -7,7 +7,8 @@ const bindTreatmentEventHandlers = () => {
     e.preventDefault()
     $.ajax({
       method: 'get',
-      url: '/treatments.json'
+      url: '/treatments',
+      dataType: 'json'
     })
     .done(function(treatments) {
       $('.container').html('<div class="notice"></div><h2 class="fh5co-nav center">Treatments</h2><ol></ol>')
