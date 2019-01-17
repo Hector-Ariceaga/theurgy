@@ -24,26 +24,26 @@ const bindTherapyEventHandlers = () => {
 
 function Therapy(therapy) {
   this.id = therapy.id
-  this.patient_id = therapy.patient_id
-  this.treatment_id = therapy.treatment_id
+  this.patientId = therapy.patient_id
+  this.treatmentId = therapy.treatment_id
   this.active = true
 
-  this.patient_name = therapy.patient.name
-  this.treatment_name = therapy.treatment.name
+  this.patientName = therapy.patient.name
+  this.treatmentName = therapy.treatment.name
 
   this.activityStatus = function(){
     if(this.active === true){
-      return `${this.patient_name}'s treatment(${this.treatment_name}) is active.`
+      return `${this.patientName}'s treatment(${this.treatmentName}) is active.`
     }
     else {
-      return `${this.patient_name}'s treatment(${this.treatment_name}) is not active.`
+      return `${this.patientName}'s treatment(${this.treatmentName}) is not active.`
     }
   }
 }
 
 Therapy.prototype.indexHtml = function() {
   let therapyHtml = `
-    <li>${this.activityStatus()} | <a href="/treatments/${this.treatment_id}">Details</a> | <a href="/therapies/${this.id}/edit">Edit Therapy</a> | <a data-confirm="Are you sure you want to delete this therapy?" rel="nofollow" data-method="delete" href="/therapies/${this.id}">Delete</a></li>
+    <li>${this.activityStatus()} | <a href="/treatments/${this.treatmentId}">Details</a> | <a href="/therapies/${this.id}/edit">Edit Therapy</a> | <a data-confirm="Are you sure you want to delete this therapy?" rel="nofollow" data-method="delete" href="/therapies/${this.id}">Delete</a></li>
     `
   return therapyHtml
 }
