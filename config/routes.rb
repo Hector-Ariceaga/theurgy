@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks"}
   COMMON_ROUTES = [:index, :new, :create, :show, :destroy]
 
   root 'welcome#home'
