@@ -29,7 +29,6 @@ gem 'pry'
 group :development, :test do
   gem 'byebug'
   gem "database_cleaner"
-  gem "sqlite3"
 end
 
 group :development do
