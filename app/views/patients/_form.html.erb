@@ -13,7 +13,7 @@
 
   <div>
   <%= f.label :symptoms %>
-  <%= f.collection_select :symptom_ids, Symptom.order('name COLLATE NOCASE ASC'), :id, :name, {include_blank: 'Remove All', include_hidden: false}, {multiple: true} %>
+  <%= f.collection_select :symptom_ids, Symptom.order('name ASC'), :id, :name, {include_blank: 'Remove All', include_hidden: false}, {multiple: true} %>
   </div>
   
   
@@ -21,7 +21,7 @@
   
   <div>
   <%= f.label :diagnoses %>
-  <%= f.collection_select :diagnosis_ids, Diagnosis.order('name COLLATE NOCASE ASC'), :id, :name, {include_blank: 'Remove All', include_hidden: false}, {multiple: true} %>
+  <%= f.collection_select :diagnosis_ids, Diagnosis.order('name ASC'), :id, :name, {include_blank: 'Remove All', include_hidden: false}, {multiple: true} %>
   </div>
 
   <%= f.submit %>

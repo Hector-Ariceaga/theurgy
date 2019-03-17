@@ -8,7 +8,7 @@
 <div class="patient_symptoms">
   <% if @patient.symptoms.any? %>
     <ol>
-      <% @patient.symptoms.order('name COLLATE NOCASE ASC').each do |symptom| %>
+      <% @patient.symptoms.order('name ASC').each do |symptom| %>
         <li><%= symptom.name %></li>
       <% end %>
     </ol>
